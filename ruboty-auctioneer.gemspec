@@ -11,8 +11,8 @@ Gem::Specification.new do |spec|
   spec.email         = ['shigefumi.kawakubo@gmail.com']
 
   spec.description   = 'TODO: Write a longer description or delete this line.'
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
   spec.summary       = 'Simple Auction chatops client.'
+  spec.homepage      = "https://github.com/kawakubox/ruboty-auctioneer"
   spec.license       = 'MIT'
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
