@@ -1,0 +1,15 @@
+AllCops:
+  Exclude:
+    - bin/**
+  DisplayCopNames: true
+  TargetRubyVersion: 2.3
+
+Metrics/LineLength:
+  Max: 128
+
+Style/Documentation:
+  Enabled: false
+
+Style/GuardClause:
+  Exclude:
+    - '*.gemspec'
