@@ -5,7 +5,9 @@ module Ruboty
       on /list\z/, name: 'list', description: '開催中のオークション一覧'
 
       def list(message)
-        message.reply('TODO : 開催中のオークション一覧を返す'.dup)
+        auctions = Ruboty::Auctioneer::Auction.include(:exhibitor).fetch
+
+        message.reply(auctions.map(&:info).join("\n").dup)
       end
 
       on /bid (?<auction_id>.*?) (?<amount>.*?)\z/, name: 'bid', description: 'オークションへの入札'
@@ -30,6 +32,16 @@ module Ruboty
       def finish(message)
         auction_id = message[:auction_id]
         message.reply("オークションNo.#{auction_id}を終了します".dup)
+      end
+
+      on /history (?<auction_id>.*?)\z/, name: 'history', description: 'オークションの入札履歴を表示する'
+
+      def history(message)
+        auction_id = message[:auction_id]
+        Ruboty::Auctioneer::Bid.munson.path = "/api/v1/auctions/#{auction_id}/bids"
+        bids = Ruboty::Auctioneer::Bid.include(:bidder).fetch
+
+        message.reply(bids.map(&:info).join("\n").dup)
       end
     end
   end
