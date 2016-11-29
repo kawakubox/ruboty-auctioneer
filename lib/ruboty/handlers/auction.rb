@@ -1,4 +1,6 @@
 # frozen_string_literal: true
+require 'ruboty/auctioneer/actions/auction_join'
+
 module Ruboty
   module Handlers
     class Auction < Base
@@ -30,6 +32,12 @@ module Ruboty
       def finish(message)
         auction_id = message[:auction_id]
         message.reply("オークションNo.#{auction_id}を終了します".dup)
+      end
+
+      on /join\z/, name: 'join', description: 'オークションに参加する'
+      
+      def join(message)
+        Ruboty::Auctioneer::Actions::AuctionJoin.new(message).call
       end
     end
   end
