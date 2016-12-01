@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 require 'munson'
+require 'faraday'
 require 'ruboty/auctioneer/version'
 require 'ruboty/auctioneer/resources'
 require 'ruboty/handlers/auction'
